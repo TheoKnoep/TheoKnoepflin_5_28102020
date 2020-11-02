@@ -3,8 +3,7 @@
 	flex-wrap:wrap; 
 	justify-content: center;
 	a {
-		color: black; 
-		text-shadow: 1px 1px 0 white; 
+		@include product-name; 
 		text-decoration: none; 
 		@include transition-effect; 
 		&:hover .product-card__image {
@@ -42,3 +41,7 @@
 	}
 }
 
+
+.product-name {
+	@include product-name; 
+}

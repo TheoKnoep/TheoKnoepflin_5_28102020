@@ -1,6 +1,7 @@
 .footer {
 	background-color: $main-color; 
 	padding: 1em; 
+	color: white; 
 }
 
 .footer-content {
@@ -8,6 +9,10 @@
 	ul {
 		display: flex;
 		justify-content: space-around;
+		list-style: none; 
+		li a {
+			color: white; 
+		}
 	}
 }
 

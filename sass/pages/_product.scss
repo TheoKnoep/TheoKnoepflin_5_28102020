@@ -1,0 +1,39 @@
+.product-container {
+	background-color: $secondary-color; 
+	width: 80%; 
+	margin: 2em auto; 
+	padding-bottom: 2em; 
+	display: flex; 
+	flex-wrap: wrap; 
+	&__image {
+		width: 50%; 
+		height: 400px; 
+		overflow: hidden;
+		display: flex; 
+		justify-content: center; 
+		align-self: center;
+		position: relative; 
+		top: -1em; 
+		left: -1em; 
+		img {
+			height: 100%; 
+			width: auto;
+		}
+	}
+	&__texts {
+		width: 50%; 
+	}
+	&__price-container {
+		display: flex; 
+		justify-content: flex-end;
+		.price-integer {
+			font-size: 200%; 
+		}
+	}
+	&__add-cart {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+

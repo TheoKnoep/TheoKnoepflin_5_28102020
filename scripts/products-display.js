@@ -17,4 +17,6 @@ fetch(url)
 				productsList.appendChild(newCard); 
 			}
 		})
- 	.catch(error => alert("Erreur : " + error));
+ 	.catch(error => {
+		 productsList.innerHTML = `<p class="no-product-warning">Il y a actuellement 0 produit dans cette catégorie</p>`
+	 });

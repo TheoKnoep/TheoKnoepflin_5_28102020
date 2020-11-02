@@ -8,3 +8,8 @@ $bg-color: #f3e9F1;
 @mixin transition-effect {
 	transition: all 350ms ease; 
 }
+
+@mixin product-name {
+	color: black; 
+	text-shadow: 1px 1px 0 white; 
+}
