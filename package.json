@@ -1,0 +1,20 @@
+{
+  "name": "oniroco",
+  "version": "1.0.0",
+  "description": "Objectif : développer un MVP de site e-commerce",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./sass/main.scss:./style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheoKnoep/TheoKnoepflin_5_28102020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheoKnoep/TheoKnoepflin_5_28102020/issues"
+  },
+  "homepage": "https://github.com/TheoKnoep/TheoKnoepflin_5_28102020#readme"
+}
