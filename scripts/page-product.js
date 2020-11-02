@@ -26,9 +26,6 @@ fetch("http://localhost:3000/api/teddies")
 			let wholePrice = response[indexWanted].price; 
 			productPriceInteger.textContent = Math.floor(wholePrice / 100); 
 			let decimalValue = wholePrice % 100; 
-			console.log(decimalValue); 
-			console.log(typeof(decimalValue)); 
-			console.log(decimalValue.toString().length); 
 			if (decimalValue.toString().length == 1) {
 				productPriceDecimal.textContent = '0' + decimalValue; 
 			} else if (decimalValue.toString().length == 2) {

@@ -1,7 +1,7 @@
 .product-container {
 	background-color: $secondary-color; 
 	width: 80%; 
-	margin: 2em auto; 
+	margin: 4em auto; 
 	padding-bottom: 2em; 
 	display: flex; 
 	flex-wrap:wrap;
@@ -13,8 +13,8 @@
 		justify-content: center; 
 		align-items: center;
 		position: relative; 
-		top: -1em; 
-		left: -1em; 
+		top: -2em; 
+		left: -2em; 
 		@include image-shadow; 
 		@include image-border; 
 		img {
@@ -25,11 +25,17 @@
 	&__texts {
 		width: calc(100% - 406px); 
 	}
+	&__name {
+		font-size: 3em; 
+	}
 	&__price-container {
 		display: flex; 
 		justify-content: flex-end;
+		align-items: center; 
+		margin-right: 1em; 
 		.price-integer {
-			font-size: 200%; 
+			font-size: 240%; 
+			font-weight: 300; 
 		}
 	}
 	&__add-cart {
