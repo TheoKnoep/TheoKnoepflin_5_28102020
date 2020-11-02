@@ -1,0 +1,18 @@
+.footer {
+	background-color: $main-color; 
+	padding: 1em; 
+}
+
+.footer-content {
+	align-items: center; 
+	ul {
+		display: flex;
+		justify-content: space-around;
+	}
+}
+
+.copyright {
+	text-align: center;
+	font-weight: bold; 
+	font-style: italic;
+}

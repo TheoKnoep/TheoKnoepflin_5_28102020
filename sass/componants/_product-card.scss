@@ -2,27 +2,42 @@
 	display: flex;
 	flex-wrap:wrap; 
 	justify-content: center;
+	a {
+		color: black; 
+		text-shadow: 1px 1px 0 white; 
+		text-decoration: none; 
+		@include transition-effect; 
+		&:hover .product-card__image {
+			transform: translate(-8px, -8px);
+			box-shadow: 6px 6px 12px rgba(0,0,0,0.25);
+		}
+	}
 }
 
 .product-card {
+	text-align: center;
 	display: flex;
 	flex-direction: column-reverse;
 	width: 300px; 
 	background-color: $secondary-color; 
 	margin: calc(1em + 12px) 1em 1em calc(1em + 24px);	
+	@include transition-effect; 
 	&__image {
-		height: 200px; 
+		@include transition-effect; 
+		height: 220px; 
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		overflow: hidden;
 		position: relative;
 		left: -24px;
-		top: -12px;
-		margin-bottom: -24px;
+		top: -24px;
+		margin-bottom: -32px;
+		border-top: solid 6px $main-color; 
+		border-left: solid 6px $main-color; 
 		img {
-			width: 100%;
-			height: auto;
+			width: auto;
+			height: 100%;
 		}
 	}
 }
