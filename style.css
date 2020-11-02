@@ -1,4 +1,4 @@
-/* utils */
+/* Utils */
 /* PALETTE DE COULEURS */
 /* Vendors */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -346,8 +346,59 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+::selection {
+  background-color: #8F5BFE;
+}
+
 .heading {
   font-family: "Karla", sans-serif;
+  font-weight: bold;
 }
+
+/* Componants */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.logo-container {
+  width: 280px;
+}
+.logo-container img {
+  width: 100%;
+}
+
+.products-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 300px;
+  background-color: #d58138;
+  margin: calc(1em + 12px) 1em 1em calc(1em + 24px);
+}
+.product-card__image {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  left: -24px;
+  top: -12px;
+  margin-bottom: -24px;
+}
+.product-card__image img {
+  width: 100%;
+  height: auto;
+}
+
+/* Pages */
 
 /*# sourceMappingURL=style.css.map */

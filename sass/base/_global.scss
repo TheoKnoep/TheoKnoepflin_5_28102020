@@ -3,6 +3,12 @@ body {
 	font-family: 'Lato', sans-serif; 
 }
 
+::selection {
+	background-color: $main-color; 
+}
+
 .heading {
 	font-family: 'Karla', sans-serif;
+	font-weight: bold;
 }
+

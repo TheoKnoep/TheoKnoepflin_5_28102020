@@ -1,0 +1,29 @@
+.products-list {
+	display: flex;
+	flex-wrap:wrap; 
+	justify-content: center;
+}
+
+.product-card {
+	display: flex;
+	flex-direction: column-reverse;
+	width: 300px; 
+	background-color: $secondary-color; 
+	margin: calc(1em + 12px) 1em 1em calc(1em + 24px);	
+	&__image {
+		height: 200px; 
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		position: relative;
+		left: -24px;
+		top: -12px;
+		margin-bottom: -24px;
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+

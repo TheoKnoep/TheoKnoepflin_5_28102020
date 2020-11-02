@@ -1,4 +1,4 @@
-/* utils */
+/* Utils */
 @import "./utils/variable"; 
 
 /* Vendors */ 
@@ -6,3 +6,10 @@
 
 /* Base */
 @import "./base/global"; 
+
+/* Componants */
+@import "./componants/header"; 
+@import "./componants/product-card"; 
+
+/* Pages */
+@import "./pages/products"; 
