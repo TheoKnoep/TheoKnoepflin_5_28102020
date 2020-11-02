@@ -1,8 +1,6 @@
 let productsList = document.getElementById("products-list"); 
 
-let url = "http://localhost:3000/api/teddies"; 
-
-fetch(url)
+fetch("http://localhost:3000/api/teddies")
 	.then(response => response.json())
     		.then(response => {
 			for (let i in response) {

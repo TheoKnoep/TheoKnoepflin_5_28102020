@@ -4,24 +4,26 @@
 	margin: 2em auto; 
 	padding-bottom: 2em; 
 	display: flex; 
-	flex-wrap: wrap; 
-	&__image {
-		width: 50%; 
+	flex-wrap:wrap;
+	&__image { 
+		width: 400px;
 		height: 400px; 
 		overflow: hidden;
 		display: flex; 
 		justify-content: center; 
-		align-self: center;
+		align-items: center;
 		position: relative; 
 		top: -1em; 
 		left: -1em; 
+		@include image-shadow; 
+		@include image-border; 
 		img {
 			height: 100%; 
 			width: auto;
 		}
 	}
 	&__texts {
-		width: 50%; 
+		width: calc(100% - 406px); 
 	}
 	&__price-container {
 		display: flex; 

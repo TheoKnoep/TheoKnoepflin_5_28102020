@@ -470,22 +470,25 @@ body {
   flex-wrap: wrap;
 }
 .product-container__image {
-  width: 50%;
+  width: 400px;
   height: 400px;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-self: center;
+  align-items: center;
   position: relative;
   top: -1em;
   left: -1em;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.25);
+  border-top: solid 6px #8F5BFE;
+  border-left: solid 6px #8F5BFE;
 }
 .product-container__image img {
   height: 100%;
   width: auto;
 }
 .product-container__texts {
-  width: 50%;
+  width: calc(100% - 406px);
 }
 .product-container__price-container {
   display: flex;

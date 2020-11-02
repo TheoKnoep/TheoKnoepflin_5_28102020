@@ -8,7 +8,7 @@
 		@include transition-effect; 
 		&:hover .product-card__image {
 			transform: translate(-8px, -8px);
-			box-shadow: 6px 6px 12px rgba(0,0,0,0.25);
+			@include image-shadow; 
 		}
 	}
 }
@@ -32,8 +32,7 @@
 		left: -24px;
 		top: -24px;
 		margin-bottom: -32px;
-		border-top: solid 6px $main-color; 
-		border-left: solid 6px $main-color; 
+		@include image-border; 
 		img {
 			width: auto;
 			height: 100%;
