@@ -29,7 +29,7 @@
 	<meta name="theme-color" content="#8F5BFE">
 </head>
 
-<body>
+<body class="waiting-cursor">
 	<header class="header">
 		<div class="logo-container">
 			<a href="index.html" title="Retour à la liste des produits">
@@ -50,14 +50,22 @@
 			</div>
 			<div class="product-container__texts">
 				<h1 class="heading product-name product-container__name" id="product-name">…</h1>
-				<p class="product-container__description" id="product-description">…</p>	
+				<p class="product-container__description" id="product-description">…</p>
+				<form method="post" action="#" class="product-container__custom-form">
+					<p>
+						<label for="custom">Personnalisez : </label>
+						<select name="custom" id="custom-choice">
+							<option value="none"></option>
+						</select>
+					</p>
+				</form>	
 				<div class="product-container__price-container">
 					<span class="price-integer" id="price-integer">--</span>
 					<span class="price-currency">€</span>
 					<span class="price-decimal" id="price-decimal">--</span>
 				</div>
 				<div class="product-container__add-cart">
-					<button class="button">Ajouter au panier</button>
+					<button class="button waiting-cursor" id="add-cart">Ajouter au panier</button>
 				</div>
 			</div>
 		</div>
@@ -77,6 +85,7 @@
 		<p class="copyright">Orinoco&copy; &mdash; 2020</p>
 	</footer>
 
+	<script src="scripts/load-cart.js"></script>
 	<script src="scripts/page-product.js"></script>
 </body>
 </html>

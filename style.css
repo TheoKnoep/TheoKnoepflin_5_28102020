@@ -466,6 +466,10 @@ body {
   border-bottom: 6px solid #6c28fe;
 }
 
+.waiting-cursor:hover {
+  cursor: wait;
+}
+
 /* Pages */
 .product-container {
   background-color: #d58138;
@@ -498,6 +502,22 @@ body {
 }
 .product-container__name {
   font-size: 3em;
+}
+.product-container__custom-form label {
+  font-style: italic;
+}
+.product-container__custom-form select {
+  border-radius: 24px;
+  border: none;
+  background-color: #f3e9F1;
+  width: 33%;
+  height: 28px;
+}
+.product-container__custom-form select option {
+  background-color: #f3e9F1;
+}
+.product-container__custom-form select option:hover {
+  background-color: #8F5BFE;
 }
 .product-container__price-container {
   display: flex;

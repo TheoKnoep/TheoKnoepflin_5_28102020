@@ -28,6 +28,24 @@
 	&__name {
 		font-size: 3em; 
 	}
+	&__custom-form {
+		label {
+			font-style: italic; 
+		}
+		select {
+			border-radius: 24px;
+			border: none;
+			background-color: $bg-color; 
+			width: 33%;
+			height: 28px;
+			option {
+				background-color: $bg-color; 
+				&:hover {
+					background-color: $main-color;
+				}
+			}
+		}
+	}
 	&__price-container {
 		display: flex; 
 		justify-content: flex-end;
