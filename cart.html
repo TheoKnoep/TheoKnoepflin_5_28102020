@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Produit</title>
+	<title>Liste des produits</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 
 	<!-- Import de la police -->
@@ -29,7 +29,7 @@
 	<meta name="theme-color" content="#8F5BFE">
 </head>
 
-<body class="waiting-cursor">
+<body>
 	<header class="header">
 		<div class="logo-container">
 			<a href="index.html" title="Retour à la liste des produits">
@@ -44,32 +44,21 @@
 	</header>
 
 	<main>
-		<div class="product-container page-content">
-			<div class="product-container__image">
-				<img src="media/visuel-indispo.jpg" alt="Image du produit" id="product-image">
-			</div>
-			<div class="product-container__texts">
-				<h1 class="heading product-name product-container__name" id="product-name">…</h1>
-				<p class="product-container__description" id="product-description">…</p>
-				<form method="post" action="#" class="product-container__custom-form">
-					<p>
-						<label for="custom">Personnalisez : </label>
-						<select name="custom" id="custom-choice">
-							<option value="none"></option>
-						</select>
-					</p>
-				</form>	
-				<div class="product-container__price-container">
-					<span class="price-integer" id="price-integer">--</span>
-					<span class="price-currency">€</span>
-					<span class="price-decimal" id="price-decimal">--</span>
-				</div>
-				<div class="product-container__add-cart">
-					<button class="button waiting-cursor" id="add-cart">Ajouter au panier</button>
-				</div>
-			</div>
+		<div class="cart-table-container page-content soft-shape">
+			<p class="no-products-message">Il n'y a aucun produit dans votre panier actuellement</p>
+			<p class="no-products-message"><a href="index.html">Retourner à la liste des produits</a></p>
 		</div>
 
+		<div class="cart-form-container page-content soft-shape">
+			<form method="post" action="#">
+				<p><label for="lastName">Nom</label> : <input type="text" name="lastName" id="lastName" autofocus required/></p>
+ 				<p><label for="firstName">Prénom</label> : <input type="text" name="firstName" id="firstName" required/></p>
+				<p><label for="adress">Adresse</label> : <input type="text" name="adress" id="adress" required /></p>
+				<p><label for="city">Ville</label> : <input type="text" name="city" id="city" required /></p>
+				<p><label for=email">Email</label> : <input type="mail" name="email" id="email" required /></p>
+				<input type="submit" id="confirm-order" value="Valider la commande" class="button"/> 
+			</form>
+		</div>
 	</main>
 
 	<footer class="footer">
