@@ -10,8 +10,6 @@ let productName = document.getElementById("product-name");
 let productDescription = document.getElementById("product-description"); 
 let productCustom = document.getElementById("custom-choice"); 
 let productPrice = document.getElementById("price-container"); 
-let productPriceInteger = document.getElementById("price-integer"); 
-let productPriceDecimal = document.getElementById("price-decimal"); 
 
 let addCartButton = document.getElementById("add-cart"); 
 let wholePage = document.querySelector("body"); 
@@ -39,7 +37,6 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 		})
 	 .catch(error => console.error('Erreur de chargement ' + error));
 
-
 // On récupère l'ID du choix de personnalisation du produit récupéré dans la liste déroulante : 
 let customProductChosen = document.getElementById("custom-choice"); 
 let customProductChosenId = 'none'; 
@@ -49,11 +46,8 @@ customProductChosen.addEventListener('change', function() {
 	console.log(customProductChosenId); 
 }); 
 
-
 //On ajoute un événement au bouton 'Ajouter au panier' qui envoie le produit vers le localStorage :
 addCartButton.addEventListener('click', function(e) {
-	console.log("click"); 
 	e.preventDefault(); 
-	myCart.displayCartInConsole(); 
 	myCart.addProductInCart(productId, productName.textContent, productImage.src, productPrice.textContent, customProductChosenId); 
 }); 
