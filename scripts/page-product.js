@@ -21,7 +21,10 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 			productImage.setAttribute("src", response.imageUrl); 
 			productName.textContent = response.name; 
 			productDescription.textContent = response.description; 
-			productPrice.textContent = response.price; 
+			//productPrice.textContent = response.price; 
+			productPrice.innerHTML = `<span class="price-integer" id="price-integer">${Utils.integerPartOfPrice(response.price)}</span>
+								<span class="price-currency">€</span>
+								<span class="price-decimal" id="price-decimal">${Utils.decimalPartOfPrice(response.price)}</span>`
 
 			//on remplit les champs du formulaire de choix de personnalisation : 
 			for (let i in response.colors) {
@@ -35,7 +38,7 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 			wholePage.classList.remove("waiting-cursor"); 
 			addCartButton.classList.remove("waiting-cursor"); 
 		})
-	 .catch(error => console.error('Erreur de chargement ' + error));
+	 .catch(error => alert("Vous devez être connecté au serveur pour afficher le produit"));
 
 // On récupère l'ID du choix de personnalisation du produit récupéré dans la liste déroulante : 
 let customProductChosen = document.getElementById("custom-choice"); 
@@ -49,5 +52,12 @@ customProductChosen.addEventListener('change', function() {
 //On ajoute un événement au bouton 'Ajouter au panier' qui envoie le produit vers le localStorage :
 addCartButton.addEventListener('click', function(e) {
 	e.preventDefault(); 
-	myCart.addProductInCart(productId, productName.textContent, productImage.src, productPrice.textContent, customProductChosenId); 
+
+	//on récupère une valeur numérique pour le prix : 
+	let priceInteger = document.getElementById("price-integer"); 
+	let priceDecimal = document.getElementById("price-decimal"); 
+	let price = parseFloat(priceInteger.textContent + priceDecimal.textContent); 
+
+	//on ajoute le produit dans le panier : 
+	myCart.addProductInCart(productId, productName.textContent, price, productImage.src, customProductChosenId); 
 }); 

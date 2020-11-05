@@ -14,5 +14,5 @@ fetch("http://localhost:3000/api/teddies")
 			}
 		})
  	.catch(error => {
-		 productsList.innerHTML = `<p class="no-product-warning">Il y a actuellement 0 produit dans cette catégorie</p>`
+		 productsList.innerHTML = `<p class="no-product-warning">Veuillez vous connecter au serveur pour afficher la liste des produits</p>`
 	 });
