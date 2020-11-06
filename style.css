@@ -414,7 +414,7 @@ body {
   color: black;
   text-shadow: 1px 1px 0 white;
   text-decoration: none;
-  transition: all 350ms ease;
+  transition: all 250ms ease;
 }
 .products-list a:hover .product-card__image {
   transform: translate(-8px, -8px);
@@ -428,10 +428,10 @@ body {
   width: 300px;
   background-color: #fcd5ce;
   margin: calc(1em + 12px) 1em 1em calc(1em + 24px);
-  transition: all 350ms ease;
+  transition: all 250ms ease;
 }
 .product-card__image {
-  transition: all 350ms ease;
+  transition: all 250ms ease;
   height: 220px;
   display: flex;
   justify-content: center;
@@ -454,19 +454,29 @@ body {
   text-shadow: 1px 1px 0 white;
 }
 
-.button {
-  background-color: #8F5BFE;
-  color: white;
+.btn {
   padding: 1em 2em;
   border-radius: 12px;
   border: none;
+}
+.btn--active {
+  color: white;
+  background-color: #8F5BFE;
+  margin-bottom: 6px;
   cursor: pointer;
-  transition: all 350ms ease;
+  transition: all 250ms ease;
   border-bottom: 0 solid #6c28fe;
 }
-.button:hover {
+.btn--active:hover {
   transform: translateY(-6px);
   border-bottom: 6px solid #6c28fe;
+  margin-bottom: 0;
+}
+.btn--inactive {
+  color: #c6c6c6;
+}
+.btn--inactive:hover {
+  cursor: not-allowed;
 }
 
 .waiting-cursor:hover {
@@ -489,7 +499,7 @@ body {
   cursor: pointer;
   font-size: 1.2em;
   opacity: 0.6;
-  transition: all 350ms ease;
+  transition: all 250ms ease;
 }
 .cart-table-container .delate-icon:hover {
   transform: rotate(12deg) translateX(2px);
@@ -497,6 +507,29 @@ body {
 }
 .cart-table-container .delate-icon i {
   margin: 6px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+.form-container form {
+  width: 90%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+}
+.form-container form .label {
+  margin-left: 12px;
+}
+.form-container form .input {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 6px;
+}
+.form-container form .submit {
+  align-self: flex-end;
 }
 
 /* Pages */
@@ -570,11 +603,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.cart-form-container {
-  height: 292px;
-  display: flex;
 }
 
 .soft-shape {

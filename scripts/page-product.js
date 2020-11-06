@@ -37,6 +37,7 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 			//on supprime le curseur d'attente pour signifier que la page a fini de charger : 
 			wholePage.classList.remove("waiting-cursor"); 
 			addCartButton.classList.remove("waiting-cursor"); 
+			addCartButton.classList.replace("btn--inactive", "btn--active"); 
 		})
 	 .catch(error => alert("Vous devez être connecté au serveur pour afficher le produit"));
 

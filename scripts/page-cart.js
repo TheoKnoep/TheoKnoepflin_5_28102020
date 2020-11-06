@@ -1,8 +1,8 @@
 let myCart = new Cart(); 
 myCart.displayCartInConsole();
-console.log(myCart.content); 
 
 let cartContainer = document.getElementById("cart-container"); 
+let confirmButton = document.getElementById("confirm-order"); 
 
 if (myCart.cartIsEmpty()) {
 	console.log("Le panier est vide"); 
@@ -43,11 +43,14 @@ if (myCart.cartIsEmpty()) {
 								</tr>
 							</tbody>
 						</table>`
+	
+	//on rend accessible le bouton de confirmation de commande en bas du formulaire : 
+	confirmButton.classList.replace("btn--inactive", "btn--active"); 
 
 }
 
 let cartTableBody = document.getElementById("cart-table-body"); 
-console.log(cartTableBody.children[1]); 
+
 let delateItems = document.querySelectorAll(".delate-items"); 
 for (let i = 0; i < myCart.content.length; i++) {
 	delateItems[i].addEventListener('click', function() {

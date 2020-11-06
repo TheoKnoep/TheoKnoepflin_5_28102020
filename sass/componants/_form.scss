@@ -1,0 +1,22 @@
+.form-container {
+	display: flex;
+	justify-content: center;
+	form {
+		width: 90%;
+		max-width: 620px;
+		display:flex;
+		flex-direction: column;
+		.label {
+			margin-left: 12px; 
+		}
+		.input {
+			width: 100%;
+			border: none;
+			border-radius: 25px;
+			padding: 6px;
+		}
+		.submit {
+			align-self: flex-end; 
+		}
+	}
+}
