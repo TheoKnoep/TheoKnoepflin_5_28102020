@@ -15,11 +15,15 @@ if (myCart.cartIsEmpty()) {
 	let innerTableCart = ''; 
 	let totalAmountofOrder = 0; 
 	for (let i in myCart.content) {
+		let customInfo = ''; 
+		if (myCart.content[i].custom != "none") {
+			customInfo = `(${myCart.content[i].custom})`; 
+		}
 		innerTableCart = innerTableCart + `<tr class="">
 									<td class="product-cell"><a href="produit.html?id=${myCart.content[i]._id}"><img src="${myCart.content[i].imageUrl}" width="150px" heith="150px"/></a></td>
-									<td class="name-product product-cell"><a href="produit.html?id=${myCart.content[i]._id}">${myCart.content[i].name}</a></td>
+									<td class="name-product product-cell"><a href="produit.html?id=${myCart.content[i]._id}">${myCart.content[i].name} <em>${customInfo}</em></a></td>
 									<td class="product-cell">${Utils.integerPartOfPrice(myCart.content[i].price)},${Utils.decimalPartOfPrice(myCart.content[i].price)} €</td>
-									<td class="delate-icon"><i class="fas fa-trash-alt" title="Retirer ce produit du panier"></i></td>
+									<td class="delate-icon"><i id="delate-item-${i}" class="fas fa-trash-alt delate-items" title="Retirer ce produit du panier"></i></td>
 								</tr>`
 		totalAmountofOrder += myCart.content[i].price; 
 	}; 
@@ -31,7 +35,7 @@ if (myCart.cartIsEmpty()) {
 									<th>Prix</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="cart-table-body">
 								${innerTableCart}
 								<tr class="total-amount-line">
 									<td colspan="2">TOTAL</td>
@@ -40,4 +44,21 @@ if (myCart.cartIsEmpty()) {
 							</tbody>
 						</table>`
 
+}
+
+let cartTableBody = document.getElementById("cart-table-body"); 
+console.log(cartTableBody.children[1]); 
+let delateItems = document.querySelectorAll(".delate-items"); 
+for (let i = 0; i < myCart.content.length; i++) {
+	delateItems[i].addEventListener('click', function() {
+		console.log(`click ${i}`); 
+		/* actions à effectuer au clic sur l'icone delate : 
+			1. supprimer la ligne du tableau [i]
+			2. supprimer l'objet index [i] dans le panier
+			3. mettre à jour le localStorage 'cart' */
+		cartTableBody.removeChild(cartTableBody.children[i]); 
+		myCart.content.splice(i, 1); 
+		localStorage.setItem("cart", JSON.stringify(myCart.content)); 
+		location.reload(); 
+	}); 
 }

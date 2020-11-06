@@ -29,7 +29,7 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 			//on remplit les champs du formulaire de choix de personnalisation : 
 			for (let i in response.colors) {
 				let newOptionForm = document.createElement("option"); 
-				newOptionForm.setAttribute("value", i); 
+				newOptionForm.setAttribute("value", response.colors[i]); 
 				newOptionForm.textContent = response.colors[i]; 
 				productCustom.appendChild(newOptionForm); 
 			}
@@ -42,11 +42,11 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 
 // On récupère l'ID du choix de personnalisation du produit récupéré dans la liste déroulante : 
 let customProductChosen = document.getElementById("custom-choice"); 
-let customProductChosenId = 'none'; 
+let customProductChosenValue = 'none'; 
 
 customProductChosen.addEventListener('change', function() {
-	customProductChosenId = document.getElementById("custom-choice").value; 
-	console.log(customProductChosenId); 
+	customProductChosenValue = document.getElementById("custom-choice").value; 
+	console.log(customProductChosenValue); 
 }); 
 
 //On ajoute un événement au bouton 'Ajouter au panier' qui envoie le produit vers le localStorage :
@@ -59,5 +59,5 @@ addCartButton.addEventListener('click', function(e) {
 	let price = parseFloat(priceInteger.textContent + priceDecimal.textContent); 
 
 	//on ajoute le produit dans le panier : 
-	myCart.addProductInCart(productId, productName.textContent, price, productImage.src, customProductChosenId); 
+	myCart.addProductInCart(productId, productName.textContent, price, productImage.src, customProductChosenValue); 
 }); 

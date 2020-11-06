@@ -6,7 +6,7 @@
 		border: none; 
 	}
 	.product-cell {
-		border: 1px solid black; 
+		border: 1px solid $main-color; 
 	}
 	.name-product {
 		width: 70%; 
@@ -19,6 +19,9 @@
 		&:hover {
 			transform: rotate(12deg) translateX(2px);
 			opacity: 1;
+		}
+		i {
+			margin: 6px; 
 		}
 	}
 }
