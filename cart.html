@@ -52,12 +52,16 @@
 
 		<div class="cart-form-container page-content soft-shape form-container">
 			<form method="post" action="confirmation.html">
-				<p><label for="lastName" class="label">Nom</label> : <input type="text" name="lastName" id="lastName" autofocus required class="input"/></p>
- 				<p><label for="firstName" class="label">Prénom</label> : <input type="text" name="firstName" id="firstName" required class="input"/></p>
+ 				<p><label for="firstName" class="label">Prénom</label> : <input type="text" name="firstName" id="firstName" autofocus required class="input"/></p>
+				<p><label for="lastName" class="label">Nom</label> : <input type="text" name="lastName" id="lastName" required class="input"/></p>
 				<p><label for="adress" class="label">Adresse</label> : <input type="text" name="adress" id="adress" required class="input"/></p>
 				<p><label for="city" class="label">Ville</label> : <input type="text" name="city" id="city" required class="input"/></p>
-				<p><label for="email" class="label">Email</label> : <input type="mail" name="email" id="email" required class="input"/></p>
-				<input type="submit" id="confirm-order" value="Valider la commande" class="btn btn--inactive submit"/> 
+				<p><label for="email" class="label">Email</label> : <input type="mail" name="email" id="email" required class="input email"/>
+				<span id="feedback-email" class="email-invalid"></span></p>
+				<div class="submit">
+					<input type="submit" id="confirm-order" value="Valider la commande" class="btn btn--inactive"/></br>
+					<span id="feedback-submit" class="feedback-submit">Veuillez remplir toutes les informations requises<br/>pour valider votre commande</span>
+				</div>
 			</form>
 		</div>
 	</main>

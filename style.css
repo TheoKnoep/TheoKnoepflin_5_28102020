@@ -485,6 +485,9 @@ body {
 .btn--inactive:hover {
   cursor: not-allowed;
 }
+.btn--inactive:focus {
+  outline: none;
+}
 
 .waiting-cursor:hover {
   cursor: wait;
@@ -541,8 +544,22 @@ body {
   border: 2px solid #8F5BFE;
   margin: 0;
 }
+.form-container form .email-invalid-border {
+  border: 2px solid red;
+}
+.form-container form .email-invalid {
+  color: red;
+  font-style: italic;
+  position: absolute;
+}
 .form-container form .submit {
   align-self: flex-end;
+}
+.form-container form .feedback-submit {
+  color: #b3b3b3;
+  font-style: italic;
+  font-size: 12px;
+  text-align: center;
 }
 
 /* Pages */

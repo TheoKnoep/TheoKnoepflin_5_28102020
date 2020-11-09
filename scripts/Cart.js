@@ -58,4 +58,42 @@ class Cart {
 		this.content = []; 
 		localStorage.setItem("cart", JSON.stringify(this.content));
 	}
+
+
+	//générer le tableau récap du panier en HTML : 
+	//Pour chaque ID présent dans le panier, on génère une ligne du tableau : 
+	toDisplayCartTable() {
+		let innerTableCart = ''; 
+		let totalAmountofOrder = 0; 
+		for (let i in this.content) {
+			let customInfo = '';  //gestion de la personnalisation du produit ou non
+			if (this.content[i].custom != "none") {
+				customInfo = `(${this.content[i].custom})`; 
+			}
+			innerTableCart = innerTableCart + `<tr class="">
+										<td class="product-cell"><a href="produit.html?id=${this.content[i]._id}"><img src="${this.content[i].imageUrl}" width="150px" heith="150px"/></a></td>
+										<td class="name-product product-cell"><a href="produit.html?id=${this.content[i]._id}">${this.content[i].name} <em>${customInfo}</em></a></td>
+										<td class="product-cell">${Utils.integerPartOfPrice(this.content[i].price)},${Utils.decimalPartOfPrice(this.content[i].price)} €</td>
+										<td class="delate-icon"><i id="delate-item-${i}" class="fas fa-trash-alt delate-items" title="Retirer ce produit du panier"></i></td>
+									</tr>`
+			totalAmountofOrder += this.content[i].price; 
+		}; 
+
+		//on génère le tableau principal dans lequel on intègre le contenu déjà généré : 
+		cartContainer.innerHTML = `<table>
+								<thead>
+									<tr>
+										<th colspan="2">Produit</th>
+										<th>Prix</th>
+									</tr>
+								</thead>
+								<tbody id="cart-table-body">
+									${innerTableCart}
+									<tr class="total-amount-line">
+										<td colspan="2">TOTAL</td>
+										<td>${Utils.integerPartOfPrice(totalAmountofOrder)},${Utils.decimalPartOfPrice(totalAmountofOrder)} €</td>
+									</tr>
+								</tbody>
+							</table>`
+	}
 }

@@ -21,8 +21,22 @@
 				margin:0; 
 			}
 		}
+		.email-invalid-border {
+			border: 2px solid red; 
+		}
+		.email-invalid {
+			color: red; 
+			font-style: italic; 
+			position: absolute; 
+		}
 		.submit {
 			align-self: flex-end; 
+		}
+		.feedback-submit {
+			color: #b3b3b3;
+			font-style: italic;
+			font-size: 12px;
+			text-align: center; 
 		}
 	}
 }

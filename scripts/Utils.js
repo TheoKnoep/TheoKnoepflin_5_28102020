@@ -21,4 +21,9 @@ class Utils {
 		} 
 		return decimalPart; 
 	}
+
+	static testEmailIsValid(email) {
+		let regex = /\S+@\S+\.\S+/; 
+		return regex.test(email); 
+	}
 }
