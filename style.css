@@ -353,6 +353,13 @@ body {
 .heading {
   font-family: "Karla", sans-serif;
   font-weight: bold;
+  text-align: center;
+}
+
+.single-paragraphe-page {
+  margin: 30vh;
+  font-style: italic;
+  text-align: center;
 }
 
 /* Componants */
@@ -527,6 +534,12 @@ body {
   border: none;
   border-radius: 25px;
   padding: 6px;
+  margin: 2px;
+}
+.form-container form .input:focus {
+  outline: none;
+  border: 2px solid #8F5BFE;
+  margin: 0;
 }
 .form-container form .submit {
   align-self: flex-end;
@@ -591,11 +604,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.no-product-warning {
-  margin: 30vh;
-  font-style: italic;
 }
 
 .cart-table-container {

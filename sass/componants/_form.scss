@@ -14,6 +14,12 @@
 			border: none;
 			border-radius: 25px;
 			padding: 6px;
+			margin: 2px; 
+			&:focus {
+				outline: none; 
+				border: 2px solid $main-color; 
+				margin:0; 
+			}
 		}
 		.submit {
 			align-self: flex-end; 

@@ -52,4 +52,10 @@ class Cart {
 			return false; 
 		}
 	}
+
+	//vider le contenu du panier : 
+	toEmptyCart() {
+		this.content = []; 
+		localStorage.setItem("cart", JSON.stringify(this.content));
+	}
 }
