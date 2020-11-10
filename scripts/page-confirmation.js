@@ -1,15 +1,10 @@
-let myCart = new Cart(); 
+//let myCart = new Cart(); 
 
-
-fetch("http://localhost:3000/api/teddies/order")
-	.then(response => response.json())
-    		.then(response => {
-			    console.log(response); 
-		})
- 	.catch(error => console.log(error));
+let orderId = JSON.parse(localStorage.getItem('order_id')); 
+console.log(orderId); 
 
 
 //on génère la réponse HTML : 
-//const orderFeedback = document.getElementById("order-feedback");
-//orderFeedback.textContent = `Votre commande n° ${response.order_id} est validée ! Nous allons la traiter au plus vite`; 
+let orderFeedback = document.getElementById("order-feedback");
+orderFeedback.innerHTML = `<p>Votre commande <strong>${orderId}</strong> est validée ! Nous allons la traiter au plus vite</p>`; 
 

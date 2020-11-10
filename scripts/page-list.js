@@ -16,3 +16,5 @@ fetch("http://localhost:3000/api/teddies")
  	.catch(error => {
 		 productsList.innerHTML = `<p class="single-paragraphe-page">Veuillez vous connecter au serveur pour afficher la liste des produits</p>`
 	 });
+
+	 

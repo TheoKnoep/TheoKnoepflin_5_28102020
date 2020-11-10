@@ -63,14 +63,7 @@ formContent.addEventListener('input', function() {
 }); 
 
 
-confirmButton.addEventListener('click', function(e) { //ou bien événement 'submit' ??
-	//si le formulaire n'est pas correctement rempli, on désactive la possibilité de l'envoyer : 
-	if (!formIsValid) {
-		e.preventDefault(); 
-	}
-
-	e.preventDefault(); //désactivation du submit pour tester le fonctionnement
-
+formContent.addEventListener('submit', function(e) { 
 	//on génère l'objet contact à partir des données du formulaire : 
 	let contact = {
 		firstName: formContent[0].value,
@@ -79,7 +72,6 @@ confirmButton.addEventListener('click', function(e) { //ou bien événement 'sub
 		city: formContent[3].value,
 		email: formContent[4].value
 	}; 
-	console.log(JSON.stringify(contact)); 
 
 	//on récupère les ID des produits dans un array de strings : 
 	let products = []; 
@@ -93,17 +85,21 @@ confirmButton.addEventListener('click', function(e) { //ou bien événement 'sub
 		contact: contact, 
 		products: products, 
 	};
-
+	console.log(order); 
 	//request options
 	const options = {
 		method: 'POST',
-		body: order 
+		body: JSON.stringify(order), 
+		headers: {"Content-type": "application/json; charset=UTF-8"}
 	}
 	fetch("http://localhost:3000/api/teddies/order", options)
 		.then(response => response.json())
-			.then(response => console.log(response))
+			.then(response => {
+				localStorage.setItem('order_id', JSON.stringify(response.orderId)); 
+			})
 		.catch(error => console.log(error)); 
 
+
 	//on réinitialise le contenu du panier : 
-	// myCart.toEmptyCart(); 
+	myCart.toEmptyCart(); 
 }); 
