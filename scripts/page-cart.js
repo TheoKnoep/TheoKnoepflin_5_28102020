@@ -55,15 +55,53 @@ let formContent = document.querySelector("form");
 let feedbackSubmit = document.getElementById("feedback-submit"); 
 
 formContent.addEventListener('input', function() {
-	if (formContent[0].value.length > 0 && formContent[1].value.length > 0 && formContent[2].value.length > 0 && formContent[3].value.length > 0 && emailIsValid) {
+	if (myCart.content.length > 0 && formContent[0].value.length > 0 && formContent[1].value.length > 0 && formContent[2].value.length > 0 && formContent[3].value.length > 0 && emailIsValid) {
 		formIsValid = true; 
 		confirmButton.classList.replace("btn--inactive", "btn--active"); 
 		feedbackSubmit.style.opacity = 0; 
 	}
 }); 
 
-confirmButton.addEventListener('click', function(e) {
+
+confirmButton.addEventListener('click', function(e) { //ou bien événement 'submit' ??
+	//si le formulaire n'est pas correctement rempli, on désactive la possibilité de l'envoyer : 
 	if (!formIsValid) {
 		e.preventDefault(); 
 	}
+
+	//on génère l'objet contact à partir des données du formulaire : 
+	let contact = {
+		firstName: formContent[0].value,
+		lastName: formContent[1].value,
+		address: formContent[2].value,
+		city: formContent[3].value,
+		email: formContent[4].value
+	}; 
+
+	//on récupère les ID des produits dans un array de strings : 
+	let products = []; 
+	for (let i in myCart.content) {
+		products.push(myCart.content[i]._id); 
+	}
+	console.log(products); 
+
+	//générer un numéro de commande : 
+	const d = new Date; 
+	const order_id = `${d.getFullYear()}${d.getMonth() + 1}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}${Math.floor(Math.random() * 10)}`; 
+
+	//on gère la requête d'envoi d'order_id, contact, prodcuts : 
+	// post body data 
+	const order = {
+		contact: contact, 
+		products: products, 
+		order_id: order_id
+	};
+	//request options
+	const options = {
+		method: 'POST',
+		body: JSON.stringify(order)
+	}
+	fetch("http://localhost:3000/api/teddies/order", options)
+		.then(res => res.json())
+			.then(res => console.log(res));
 }); 
