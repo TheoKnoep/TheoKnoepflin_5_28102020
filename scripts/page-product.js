@@ -1,64 +1,72 @@
-let myCart = new Cart(); 
-myCart.displayCartInConsole();
-console.log(myCart.content); 
+let myCart = new Cart();
 
-let url = new URL(window.location.href); 
-let productId = url.searchParams.get("id"); 
+//on récupère l'id du produit contenu dans l'adresse URL : 
+let url = new URL(window.location.href);
+let productId = url.searchParams.get("id");
 
-let productImage = document.getElementById("product-image"); 
-let productName = document.getElementById("product-name"); 
-let productDescription = document.getElementById("product-description"); 
-let productCustom = document.getElementById("custom-choice"); 
-let productPrice = document.getElementById("price-container"); 
+//on déclare les variables locales : 
+let productImage = document.getElementById("product-image");
+let productName = document.getElementById("product-name");
+let productDescription = document.getElementById("product-description");
+let productCustom = document.getElementById("custom-choice");
+let productPrice = document.getElementById("price-container");
 
-let addCartButton = document.getElementById("add-cart"); 
-let wholePage = document.querySelector("body"); 
+let customProductChosen = document.getElementById("custom-choice");
+let customProductChosenValue = 'none';
 
+let addCartButton = document.getElementById("add-cart");
+let wholePage = document.querySelector("body");
+
+
+//Appel au serveur pour récupérer les infos produits
 fetch("http://localhost:3000/api/teddies/" + productId)
 	.then(response => response.json())
-    		.then(response => {
-			//on remplit les champs HTML dédiés : 
-			productImage.setAttribute("src", response.imageUrl); 
-			productName.textContent = response.name; 
-			productDescription.textContent = response.description; 
-			//productPrice.textContent = response.price; 
-			productPrice.innerHTML = `<span class="price-integer" id="price-integer">${Utils.integerPartOfPrice(response.price)}</span>
-								<span class="price-currency">€</span>
-								<span class="price-decimal" id="price-decimal">${Utils.decimalPartOfPrice(response.price)}</span>`
+	.then(response => {
+		displayProduct(response);
+		addEventsListeners(response);
+		activatePage();
+	})
+	.catch(error => alert("Vous devez être connecté au serveur pour afficher le produit"));
 
-			//on remplit les champs du formulaire de choix de personnalisation : 
-			for (let i in response.colors) {
-				let newOptionForm = document.createElement("option"); 
-				newOptionForm.setAttribute("value", response.colors[i]); 
-				newOptionForm.textContent = response.colors[i]; 
-				productCustom.appendChild(newOptionForm); 
-			}
 
-			//on supprime le curseur d'attente pour signifier que la page a fini de charger : 
-			wholePage.classList.remove("waiting-cursor"); 
-			addCartButton.classList.remove("waiting-cursor"); 
-			addCartButton.classList.replace("btn--inactive", "btn--active"); 
-		})
-	 .catch(error => alert("Vous devez être connecté au serveur pour afficher le produit"));
+/* ======================
+--- FONCTIONS LOCALES ---
+====================== */
 
-// On récupère l'ID du choix de personnalisation du produit récupéré dans la liste déroulante : 
-let customProductChosen = document.getElementById("custom-choice"); 
-let customProductChosenValue = 'none'; 
+function displayProduct(product) {
+	//on remplit les champs HTML dédiés : 
+	productImage.setAttribute("src", product.imageUrl);
+	productName.textContent = product.name;
+	productDescription.textContent = product.description;
+	productPrice.innerHTML = `<span class="price-integer" id="price-integer">${Utils.integerPartOfPrice(product.price)}</span>
+					<span class="price-currency">€</span>
+					<span class="price-decimal" id="price-decimal">${Utils.decimalPartOfPrice(product.price)}</span>`
 
-customProductChosen.addEventListener('change', function() {
-	customProductChosenValue = document.getElementById("custom-choice").value; 
-	console.log(customProductChosenValue); 
-}); 
+	//on remplit les champs du formulaire de choix de personnalisation : 
+	for (let i in product.colors) {
+		let newOptionForm = document.createElement("option");
+		newOptionForm.setAttribute("value", product.colors[i]);
+		newOptionForm.textContent = product.colors[i];
+		productCustom.appendChild(newOptionForm);
+	}
+}
 
-//On ajoute un événement au bouton 'Ajouter au panier' qui envoie le produit vers le localStorage :
-addCartButton.addEventListener('click', function(e) {
-	e.preventDefault(); 
+function activatePage() { //on supprime les éléments d'UI indiquant le chargement de la page : 
+	wholePage.classList.remove("waiting-cursor");
+	addCartButton.classList.remove("waiting-cursor");
+	addCartButton.classList.replace("btn--inactive", "btn--active");
+}
 
-	//on récupère une valeur numérique pour le prix : 
-	let priceInteger = document.getElementById("price-integer"); 
-	let priceDecimal = document.getElementById("price-decimal"); 
-	let price = parseFloat(priceInteger.textContent + priceDecimal.textContent); 
+function addEventsListeners(product) { //on gère les événements de la page : 
+	//évenement d'ajout au panier : 
+	addCartButton.addEventListener('click', function (e) {
+		e.preventDefault();
+		myCart.addProductInCart(product._id, product.name, product.price, product.imageUrl, customProductChosenValue);
+	})
 
-	//on ajoute le produit dans le panier : 
-	myCart.addProductInCart(productId, productName.textContent, price, productImage.src, customProductChosenValue); 
-}); 
+	//choix de personnalisation du produit récupéré dans la liste déroulante : 
+	customProductChosen.addEventListener('change', function () {
+		customProductChosenValue = document.getElementById("custom-choice").value;
+		console.log(customProductChosenValue);
+	});
+}
