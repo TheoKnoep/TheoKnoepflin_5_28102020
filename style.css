@@ -655,6 +655,13 @@ body {
   font-style: italic;
 }
 
+.confirmation-style {
+  color: #8F5BFE;
+  padding: 0.3em 0.6em;
+  border: solid 1px #8F5BFE;
+  border-radius: 8px;
+}
+
 /* Layout */
 .page-content {
   background-color: #fcd5ce;
