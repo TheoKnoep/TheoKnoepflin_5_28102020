@@ -383,9 +383,25 @@ body {
 .navbar a {
   text-decoration: none;
   color: #8F5BFE;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
 }
 .navbar ul {
   list-style: none;
+}
+.navbar .icon-part {
+  font-size: 140%;
+}
+.navbar .counter-part {
+  position: relative;
+  top: 10px;
+  left: 16px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 1000px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
 }
 
 .footer {

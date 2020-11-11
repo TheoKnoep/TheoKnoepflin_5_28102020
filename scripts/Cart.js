@@ -72,7 +72,7 @@ class Cart {
 			}
 			innerTableCart = innerTableCart + `<tr class="">
 										<td class="product-cell"><a href="produit.html?id=${this.content[i]._id}"><img src="${this.content[i].imageUrl}" width="150px" heith="150px"/></a></td>
-										<td class="name-product product-cell"><a href="produit.html?id=${this.content[i]._id}">${this.content[i].name} <em>${customInfo}</em></a></td>
+										<td class="name-product product-cell"><h2 class=""><a href="produit.html?id=${this.content[i]._id}">${this.content[i].name} <em>${customInfo}</em></a></h2></td>
 										<td class="product-cell">${Utils.integerPartOfPrice(this.content[i].price)},${Utils.decimalPartOfPrice(this.content[i].price)} €</td>
 										<td class="delate-icon"><i id="delate-item-${i}" class="fas fa-trash-alt delate-items" title="Retirer ce produit du panier"></i></td>
 									</tr>`
@@ -95,5 +95,16 @@ class Cart {
 									</tr>
 								</tbody>
 							</table>`
+	}
+
+	//fonction afficher le nombre d'articles du panier dans le header :  
+	displayNumberOfArticles(idElement) {
+		if (this.content.length > 0) {
+			let linkToCart = document.getElementById(idElement); 
+			let newFirstElement = document.createElement("span"); 
+			newFirstElement.classList.add("counter-part"); 
+			newFirstElement.textContent = myCart.content.length; 
+			linkToCart.insertAdjacentElement('afterbegin', newFirstElement); 
+		}
 	}
 }

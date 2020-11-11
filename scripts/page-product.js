@@ -1,10 +1,11 @@
 let myCart = new Cart();
+myCart.displayNumberOfArticles("link-to-cart"); 
 
 //on récupère l'id du produit contenu dans l'adresse URL : 
 let url = new URL(window.location.href);
 let productId = url.searchParams.get("id");
 
-//on déclare les variables locales : 
+//variables locales : 
 let productImage = document.getElementById("product-image");
 let productName = document.getElementById("product-name");
 let productDescription = document.getElementById("product-description");
@@ -18,7 +19,7 @@ let addCartButton = document.getElementById("add-cart");
 let wholePage = document.querySelector("body");
 
 
-//Appel au serveur pour récupérer les infos produits
+//Appel au serveur pour récupérer les infos produit
 fetch("http://localhost:3000/api/teddies/" + productId)
 	.then(response => response.json())
 	.then(response => {
