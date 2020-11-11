@@ -27,6 +27,7 @@ class Cart {
 
 	//ajouter un produit au panier : 
 	addProductInCart(id, name, price, imageUrl, custom) {
+		/*
 		if (this.checkProductInCart(id)) {
 			console.log(`${id} est déjà présent dans votre panier`); 
 		} else {
@@ -41,7 +42,19 @@ class Cart {
 			)
 			localStorage.setItem("cart", JSON.stringify(this.content));
 			console.log(`${id} a bien été ajouté à votre panier avec l'option : ${custom}`); 
-		}
+		} */
+		this.content.push(
+			{
+				_id: id,
+				name: name, 
+				price: price,
+				imageUrl: imageUrl, 
+				custom: custom
+			}
+	)
+	localStorage.setItem("cart", JSON.stringify(this.content));
+	console.log(`${id} a bien été ajouté à votre panier avec l'option : ${custom}`); 
+
 	}
 
 	//vérifier si le panier est vide : 
@@ -98,13 +111,26 @@ class Cart {
 	}
 
 	//fonction afficher le nombre d'articles du panier dans le header :  
+	createCounterHeader(element) {
+		let newFirstElement = document.createElement("span"); 
+		newFirstElement.classList.add("counter-part"); 
+		newFirstElement.textContent = myCart.content.length; 
+		element.insertAdjacentElement('afterbegin', newFirstElement); 
+	}
+
 	displayNumberOfArticles(idElement) {
+		let linkToCart = document.getElementById(idElement); 
 		if (this.content.length > 0) {
-			let linkToCart = document.getElementById(idElement); 
-			let newFirstElement = document.createElement("span"); 
-			newFirstElement.classList.add("counter-part"); 
-			newFirstElement.textContent = myCart.content.length; 
-			linkToCart.insertAdjacentElement('afterbegin', newFirstElement); 
+			this.createCounterHeader(linkToCart); 
+		}
+	}
+	updateNumberOfArticles(idElement) {
+		let linkToCart = document.getElementById(idElement); 
+		if (this.content.length == 1) {
+			this.createCounterHeader(linkToCart); 
+		} else {
+			console.log(linkToCart.children); 
+			linkToCart.children[0].textContent = this.content.length; 
 		}
 	}
 }

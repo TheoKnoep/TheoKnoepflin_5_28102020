@@ -63,6 +63,7 @@ function addEventsListeners(product) { //on gère les événements de la page :
 	addCartButton.addEventListener('click', function (e) {
 		e.preventDefault();
 		myCart.addProductInCart(product._id, product.name, product.price, product.imageUrl, customProductChosenValue);
+		myCart.updateNumberOfArticles("link-to-cart"); 
 	})
 
 	//choix de personnalisation du produit récupéré dans la liste déroulante : 
