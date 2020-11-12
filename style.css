@@ -348,6 +348,7 @@ body {
 
 ::selection {
   background-color: #8F5BFE;
+  color: white;
 }
 
 .heading {
