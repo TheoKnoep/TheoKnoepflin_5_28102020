@@ -7,6 +7,11 @@
 	}
 	.product-cell {
 		border: 1px solid $main-color; 
+		img {
+			@include mobile-only {
+				width: 80px; 
+			}
+		}
 	}
 	.name-product {
 		width: 70%; 

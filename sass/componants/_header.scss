@@ -43,4 +43,9 @@
 		height: 20px;
 		text-align: center;
 	}
+	.text-part {
+		@include mobile-only {
+			display: none; 
+		}
+	}
 }

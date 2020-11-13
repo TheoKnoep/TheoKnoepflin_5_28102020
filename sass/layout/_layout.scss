@@ -3,4 +3,7 @@
 	width: 80%; 
 	margin: 4em auto; 
 	padding-bottom: 2em; 
+	@include mobile-only {
+		margin: 1em auto; 
+	}
 }

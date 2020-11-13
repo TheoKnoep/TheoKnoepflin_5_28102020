@@ -6,12 +6,22 @@
 
 .footer-content {
 	align-items: center; 
+	.heading {
+		@include mobile-only {
+			text-align: left; 
+		}
+	}
 	ul {
 		display: flex;
 		justify-content: space-around;
 		list-style: none; 
 		li a {
 			color: white; 
+		}
+		@include mobile-only {
+			display: block; 
+			padding: 0;
+			line-height: 3;
 		}
 	}
 }

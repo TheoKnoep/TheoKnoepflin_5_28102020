@@ -17,9 +17,18 @@
 			height: 100%; 
 			width: auto;
 		}
+		@include mobile-only {
+			top: 0; 
+			left: 0; 
+			height: 300px; 
+		}
 	}
 	&__texts {
 		width: calc(100% - 406px); 
+		@include mobile-only {
+			width: 90%; 
+			margin: auto; 
+		}
 	}
 	&__name {
 		font-size: 3em; 
