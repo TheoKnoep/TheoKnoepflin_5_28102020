@@ -89,7 +89,7 @@ formContent.addEventListener('submit', function (e) {
 		.then(response => response.json())
 			.then(response => {
 				localStorage.setItem('order_id', JSON.stringify(response.orderId));
-				window.location.pathname = "/confirmation.html"; 
+				window.location.replace("./confirmation.html"); 
 			})
 		.catch(error => console.log(error));
 
@@ -102,7 +102,7 @@ formContent.addEventListener('submit', function (e) {
 
 /* ========================
 --------- FONCTIONS ---------
-=========================*/
+======================== */
 function delateItemOfCart(cartTableBody, delateItems) {
 	for (let i = 0; i < myCart.content.length; i++) {
 		delateItems[i].addEventListener('click', function () {

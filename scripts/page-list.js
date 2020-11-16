@@ -12,9 +12,9 @@ fetch("http://localhost:3000/api/teddies")
 		productsList.innerHTML = `<p class="single-paragraphe-page">Veuillez vous connecter au serveur pour afficher la liste des produits</p>`
 	});
 
-/* ======================
---- FONCTIONS LOCALES ---
-====================== */
+/* =====================
+------- FONCTIONS -------
+===================== */
 function displayList(products) {
 	for (let i in products) {
 		let teddy = new Teddy(products[i]);

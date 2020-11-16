@@ -23,16 +23,18 @@ let wholePage = document.querySelector("body");
 fetch("http://localhost:3000/api/teddies/" + productId)
 	.then(response => response.json())
 	.then(response => {
+		typeof(response); 
 		displayProduct(response);
 		addEventsListeners(response);
+		setProductPageTitle(response); 
 		activatePage();
 	})
 	.catch(error => alert("Vous devez être connecté au serveur pour afficher le produit"));
 
 
-/* ======================
---- FONCTIONS LOCALES ---
-====================== */
+/* =====================
+------- FONCTIONS  -------
+===================== */
 
 function displayProduct(product) {
 	//on remplit les champs HTML dédiés : 
@@ -71,4 +73,8 @@ function addEventsListeners(product) { //on gère les événements de la page :
 		customProductChosenValue = document.getElementById("custom-choice").value;
 		console.log(customProductChosenValue);
 	});
+}
+
+function setProductPageTitle(product) {
+	document.title = `${product.name} – Ours en peluche fabriqués à la main ❤`; 
 }

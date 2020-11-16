@@ -27,22 +27,6 @@ class Cart {
 
 	//ajouter un produit au panier : 
 	addProductInCart(id, name, price, imageUrl, custom) {
-		/*
-		if (this.checkProductInCart(id)) {
-			console.log(`${id} est déjà présent dans votre panier`); 
-		} else {
-			this.content.push(
-				{
-					_id: id,
-					name: name, 
-					price: price,
-					imageUrl: imageUrl, 
-					custom: custom
-				}
-			)
-			localStorage.setItem("cart", JSON.stringify(this.content));
-			console.log(`${id} a bien été ajouté à votre panier avec l'option : ${custom}`); 
-		} */
 		this.content.push(
 			{
 				_id: id,
@@ -76,8 +60,8 @@ class Cart {
 				customInfo = `(${this.content[i].custom})`; 
 			}
 			innerTableCart = innerTableCart + `<tr class="">
-										<td class="product-cell"><a href="produit.html?id=${this.content[i]._id}"><img src="${this.content[i].imageUrl}" width="150px" heith="150px"/></a></td>
-										<td class="name-product product-cell"><h2 class=""><a href="produit.html?id=${this.content[i]._id}">${this.content[i].name} <em>${customInfo}</em></a></h2></td>
+										<td class="product-cell"><a href="product.html?id=${this.content[i]._id}"><img src="${this.content[i].imageUrl}" width="150px" heith="150px"/></a></td>
+										<td class="name-product product-cell"><h2 class=""><a href="product.html?id=${this.content[i]._id}">${this.content[i].name} <em>${customInfo}</em></a></h2></td>
 										<td class="product-cell">${Utils.integerPartOfPrice(this.content[i].price)},${Utils.decimalPartOfPrice(this.content[i].price)}&nbsp;€</td>
 										<td class="delate-icon"><i id="delate-item-${i}" class="fas fa-trash-alt delate-items" title="Retirer ce produit du panier"></i></td>
 									</tr>`
@@ -102,29 +86,13 @@ class Cart {
 							</table>`
 	}
 
-	//Suprimer un article du panier : 
-	/*
-	delateItemOfCart(cartTableBody, delateItems) {
-		for (let i = 0; i < this.content.length; i++) {
-			delateItems[i].addEventListener('click', function () {
-				if (window.confirm("Voulez-vous supprimer cet article du panier ?")) {
-					cartTableBody.removeChild(cartTableBody.children[i]); 
-					this.content.splice(i, 1); 
-					localStorage.setItem("cart", JSON.stringify(this.content));
-					location.reload();
-				}
-			});
-		}
-	}
-	*/
-
 	//vider le contenu du panier : 
 	toEmptyCart() {
 		this.content = []; 
 		localStorage.setItem("cart", JSON.stringify(this.content));
 	}
 
-	//fonction afficher le nombre d'articles du panier dans le header :  
+	//afficher le nombre d'articles du panier dans le header :  
 	createCounterHeader(element) {
 		let newFirstElement = document.createElement("span"); 
 		newFirstElement.classList.add("counter-part"); 
