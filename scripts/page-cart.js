@@ -65,6 +65,7 @@ formContent.addEventListener('input', function () {
 
 //Gestion de l'événement Validation du formulaire : 
 formContent.addEventListener('submit', function (e) {
+	e.preventDefault(); 
 	//on génère l'objet contact à partir des données du formulaire : 
 	let contact = {
 		firstName: formContent[0].value,
@@ -99,10 +100,10 @@ formContent.addEventListener('submit', function (e) {
 		.then(response => response.json())
 			.then(response => {
 				localStorage.setItem('order_id', JSON.stringify(response.orderId));
+				window.location.pathname = "/confirmation.html"; 
 			})
 		.catch(error => console.log(error));
 
-	//e.preventDefault(); 
 	//on réinitialise le contenu du panier : 
-	//myCart.toEmptyCart();
+	myCart.toEmptyCart();
 });
