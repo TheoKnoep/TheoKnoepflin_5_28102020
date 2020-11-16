@@ -26,8 +26,7 @@ fetch("http://localhost:3000/api/teddies/" + productId)
 		typeof(response); 
 		displayProduct(response);
 		addEventsListeners(response);
-		setProductPageTitle(response); 
-		activatePage();
+		activatePage(response);
 	})
 	.catch(error => alert("Vous devez être connecté au serveur pour afficher le produit"));
 
@@ -54,10 +53,11 @@ function displayProduct(product) {
 	}
 }
 
-function activatePage() { //on supprime les éléments d'UI indiquant le chargement de la page : 
+function activatePage(product) { //on supprime les éléments d'UI indiquant le chargement de la page : 
 	wholePage.classList.remove("waiting-cursor");
 	addCartButton.classList.remove("waiting-cursor");
 	addCartButton.classList.replace("btn--inactive", "btn--active");
+	document.title = `${product.name} – Ours en peluche fabriqués à la main ❤`; 
 }
 
 function addEventsListeners(product) { //on gère les événements de la page : 
@@ -75,6 +75,3 @@ function addEventsListeners(product) { //on gère les événements de la page :
 	});
 }
 
-function setProductPageTitle(product) {
-	document.title = `${product.name} – Ours en peluche fabriqués à la main ❤`; 
-}
