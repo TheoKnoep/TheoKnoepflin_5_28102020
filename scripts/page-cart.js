@@ -16,19 +16,8 @@ if (myCart.cartIsEmpty()) {
 //gestion suppression des produits du panier : 
 let cartTableBody = document.getElementById("cart-table-body");
 let delateItems = document.querySelectorAll(".delate-items");
-for (let i = 0; i < myCart.content.length; i++) {
-	delateItems[i].addEventListener('click', function () {
-		/* actions à effectuer au clic sur l'icone delate : 
-			1. supprimer la ligne du tableau [i]
-			2. supprimer l'objet index [i] dans le panier
-			3. mettre à jour le localStorage "cart" 
-			4. recharger la page */
-		/* 1 */ cartTableBody.removeChild(cartTableBody.children[i]);
-		/* 2 */ myCart.content.splice(i, 1);
-		/* 3 */	localStorage.setItem("cart", JSON.stringify(myCart.content));
-		/* 4 */	location.reload();
-	});
-}
+delateItemOfCart(cartTableBody, delateItems); 
+
 
 
 /* ----------- GESTION DU FORMULAIRE ---------- */
@@ -107,3 +96,22 @@ formContent.addEventListener('submit', function (e) {
 	//on réinitialise le contenu du panier : 
 	myCart.toEmptyCart();
 });
+
+
+
+
+/* ========================
+--------- FONCTIONS ---------
+=========================*/
+function delateItemOfCart(cartTableBody, delateItems) {
+	for (let i = 0; i < myCart.content.length; i++) {
+		delateItems[i].addEventListener('click', function () {
+			if (window.confirm("Voulez-vous supprimer cet article du panier ?")) {
+				cartTableBody.removeChild(cartTableBody.children[i]); 
+				myCart.content.splice(i, 1); 
+				localStorage.setItem("cart", JSON.stringify(myCart.content));
+				location.reload();
+			}
+		});
+	}
+}

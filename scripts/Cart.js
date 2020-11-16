@@ -54,7 +54,6 @@ class Cart {
 	)
 	localStorage.setItem("cart", JSON.stringify(this.content));
 	console.log(`${id} a bien été ajouté à votre panier avec l'option : ${custom}`); 
-
 	}
 
 	//vérifier si le panier est vide : 
@@ -65,13 +64,6 @@ class Cart {
 			return false; 
 		}
 	}
-
-	//vider le contenu du panier : 
-	toEmptyCart() {
-		this.content = []; 
-		localStorage.setItem("cart", JSON.stringify(this.content));
-	}
-
 
 	//générer le tableau récap du panier en HTML : 
 	//Pour chaque ID présent dans le panier, on génère une ligne du tableau : 
@@ -110,11 +102,33 @@ class Cart {
 							</table>`
 	}
 
+	//Suprimer un article du panier : 
+	/*
+	delateItemOfCart(cartTableBody, delateItems) {
+		for (let i = 0; i < this.content.length; i++) {
+			delateItems[i].addEventListener('click', function () {
+				if (window.confirm("Voulez-vous supprimer cet article du panier ?")) {
+					cartTableBody.removeChild(cartTableBody.children[i]); 
+					this.content.splice(i, 1); 
+					localStorage.setItem("cart", JSON.stringify(this.content));
+					location.reload();
+				}
+			});
+		}
+	}
+	*/
+
+	//vider le contenu du panier : 
+	toEmptyCart() {
+		this.content = []; 
+		localStorage.setItem("cart", JSON.stringify(this.content));
+	}
+
 	//fonction afficher le nombre d'articles du panier dans le header :  
 	createCounterHeader(element) {
 		let newFirstElement = document.createElement("span"); 
 		newFirstElement.classList.add("counter-part"); 
-		newFirstElement.textContent = myCart.content.length; 
+		newFirstElement.textContent = this.content.length; 
 		element.insertAdjacentElement('afterbegin', newFirstElement); 
 	}
 
