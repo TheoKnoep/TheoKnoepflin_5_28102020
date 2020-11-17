@@ -361,6 +361,7 @@ body {
   margin: 30vh;
   font-style: italic;
   text-align: center;
+  line-height: 2;
 }
 
 /* Componants */
@@ -393,6 +394,7 @@ body {
 }
 .navbar .icon-part {
   font-size: 140%;
+  margin-right: 8px;
 }
 .navbar .counter-part {
   position: relative;

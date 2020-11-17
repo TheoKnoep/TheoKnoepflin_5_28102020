@@ -67,7 +67,6 @@ class Cart {
 									</tr>`
 			totalAmountofOrder += this.content[i].price; 
 		}; 
-
 		//on génère le tableau principal dans lequel on intègre le contenu déjà généré : 
 		cartContainer.innerHTML = `<table>
 								<thead>
@@ -80,7 +79,7 @@ class Cart {
 									${innerTableCart}
 									<tr class="total-amount-line">
 										<td colspan="2">TOTAL</td>
-										<td>${Utils.integerPartOfPrice(totalAmountofOrder)},${Utils.decimalPartOfPrice(totalAmountofOrder)} €</td>
+										<td>${Utils.integerPartOfPrice(totalAmountofOrder)},${Utils.decimalPartOfPrice(totalAmountofOrder)}&nbsp;€</td>
 									</tr>
 								</tbody>
 							</table>`
@@ -100,6 +99,10 @@ class Cart {
 		element.insertAdjacentElement('afterbegin', newFirstElement); 
 	}
 
+	delateCounterHeader(element) { 
+		element.children[0].remove();
+	}
+
 	displayNumberOfArticles(idElement) {
 		let linkToCart = document.getElementById(idElement); 
 		if (this.content.length > 0) {
@@ -108,11 +111,22 @@ class Cart {
 	}
 	updateNumberOfArticles(idElement) {
 		let linkToCart = document.getElementById(idElement); 
-		if (this.content.length == 1) {
+		if (this.content.length == 0) {
+			this.delateCounterHeader(linkToCart); 
+		} else if (this.content.length == 1) {
 			this.createCounterHeader(linkToCart); 
 		} else {
 			console.log(linkToCart.children); 
 			linkToCart.children[0].textContent = this.content.length; 
 		}
+	}
+
+	//calculer le montant du panier : 
+	calculateSumOfCart() {
+		let sum = 0; 
+		for (let i in this.content) {
+			sum += this.content[i].price; 
+		}
+		return sum; 
 	}
 }

@@ -92,9 +92,6 @@ formContent.addEventListener('submit', function (e) {
 				window.location.replace("./confirmation.html"); 
 			})
 		.catch(error => console.log(error));
-
-	//on réinitialise le contenu du panier : 
-	myCart.toEmptyCart();
 });
 
 
