@@ -35,9 +35,9 @@ class Cart {
 				imageUrl: imageUrl, 
 				custom: custom
 			}
-	)
-	localStorage.setItem("cart", JSON.stringify(this.content));
-	console.log(`${id} a bien été ajouté à votre panier avec l'option : ${custom}`); 
+		)
+		localStorage.setItem("cart", JSON.stringify(this.content));
+		console.log(`${id} a bien été ajouté à votre panier avec l'option : ${custom}`); 
 	}
 
 	//vérifier si le panier est vide : 

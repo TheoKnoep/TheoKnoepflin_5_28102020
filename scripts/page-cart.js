@@ -89,7 +89,9 @@ formContent.addEventListener('submit', function (e) {
 		.then(response => response.json())
 			.then(response => {
 				localStorage.setItem('order_id', JSON.stringify(response.orderId));
-				window.location.replace("./confirmation.html"); 
+				if (formIsValid) {
+					window.location.replace("./confirmation.html"); 
+				}
 			})
 		.catch(error => console.log(error));
 });

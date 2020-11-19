@@ -23,7 +23,6 @@ let wholePage = document.querySelector("body");
 fetch("http://localhost:3000/api/teddies/" + productId)
 	.then(response => response.json())
 	.then(response => {
-		typeof(response); 
 		displayProduct(response);
 		addEventsListeners(response);
 		activatePage(response);
@@ -61,7 +60,7 @@ function activatePage(product) { //on supprime les éléments d'UI indiquant le 
 }
 
 function addEventsListeners(product) { //on gère les événements de la page : 
-	//évenement d'ajout au panier : 
+	//événement d'ajout au panier : 
 	addCartButton.addEventListener('click', function (e) {
 		e.preventDefault();
 		myCart.addProductInCart(product._id, product.name, product.price, product.imageUrl, customProductChosenValue);
